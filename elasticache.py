@@ -26,6 +26,12 @@ def write_redis_key(r, new_key, new_value):
             print('Successfully set expiry time')
         else:
             print('Unsuccessful key does not exist')
+            
+# Read from Redis cluster
+def read_redis_key(r, new_key):
+    temp_success = r.get(new_key)
+    if temp_success:
+        print('Value of ' + new_key + ' = ' + temp_success.decode("utf-8") )
         
 # Main program
 def main():
