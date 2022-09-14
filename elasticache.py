@@ -32,6 +32,8 @@ def read_redis_key(r, new_key):
     temp_success = r.get(new_key)
     if temp_success:
         print('Value of ' + new_key + ' = ' + temp_success.decode("utf-8") )
+    else:
+        print('Unsuccessful')
         
 # Main program
 def main():
