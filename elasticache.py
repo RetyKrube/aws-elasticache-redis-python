@@ -15,8 +15,15 @@ def config_redis_connection():
     print(r)
     return r
 
+# Write to Redis cluster
+def write_redis_key(r, new_key, new_value):
+    temp_success = r.set(new_key, new_value)
+    if temp_success:
+        print('Successfully wrote to Redis')        
+        
 # Main program
 def main():
     redis_connection = config_redis_connection()
+    write_redis_key(redis_connection, 'myHighScore', 1000)
 if __name__ == '__main__':
     main()
