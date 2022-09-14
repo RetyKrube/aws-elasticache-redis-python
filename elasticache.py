@@ -33,11 +33,19 @@ def read_redis_key(r, new_key):
     if temp_success:
         print('Value of ' + new_key + ' = ' + temp_success.decode("utf-8") )
     else:
-        print('Unsuccessful')
+        print('Unsuccessful key does not exist')
         
 # Main program
 def main():
     redis_connection = config_redis_connection()
     write_redis_key(redis_connection, 'myHighScore', 1000)
+    read_redis_key(redis_connection, 'myHighScore')
+    temp_obj = {
+        'info1': 'This is info 1',
+        'info2': 'This is info 2',
+        'info3': 'This is info 3'
+    }
+    write_redis_object(redis_connection, 'myInfo', temp_obj)
+    
 if __name__ == '__main__':
     main()
