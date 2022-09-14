@@ -35,6 +35,12 @@ def read_redis_key(r, new_key):
     else:
         print('Unsuccessful key does not exist')
         
+# Write object to Redis cluster
+def write_redis_object(r, new_key, new_object):
+    temp_success = r.hmset(new_key, new_object)
+    if temp_success:
+        print('Successfully wrote object to Redis')
+        
 # Main program
 def main():
     redis_connection = config_redis_connection()
